@@ -3,30 +3,30 @@ import json
 
 topterms = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchTopTerms&output=json"
 
-buscar = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=search&output=json&arg=oveja"
+buscar = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=search&output=json&arg={}"
 
-exacto = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetch&output=json&arg=oveja"
+exacto = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetch&output=json&arg={}"
 
-empieza_por = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=suggest&arg=ove"
+empieza_por = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=suggest&arg={}"
 
-fetchTerm = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchTerm&arg=1"
+fetchTerm = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchTerm&arg={}"
 
 fetchAlt = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchAlt&arg={}&output=json"
 
 fetchDown = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchDown&arg={}&output=json"
 
-fetchUp  = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchUp&arg=1&output=json"
+fetchUp  = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchUp&arg={}&output=json"
 
 fetchRelated  = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchRelated&arg={}&output=json"
 
 # Retrieve alternative, related and direct hieraquical terms for one term_id
-fetchDirectTerms = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchDirectTerms&arg=1&output=json"
+fetchDirectTerms = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchDirectTerms&arg={}&output=json"
 
-targedTerms = "http://ibersid.eu/tesauros/tesauro_03/vocab//services.php?task=fetchTargetTerms&arg=1&output=json"
+targedTerms = "http://ibersid.eu/tesauros/tesauro_03/vocab//services.php?task=fetchTargetTerms&arg={}&output=json"
 
-relatedTerms = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchRelatedTerms&arg=1,4"
+relatedTerms = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchRelatedTerms&arg={}"
 
-similar = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchSimilar&arg=a"
+similar = "http://ibersid.eu/tesauros/tesauro_03/vocab/services.php?task=fetchSimilar&arg={}"
 
 # top 
 def get_top_ids():
@@ -98,4 +98,4 @@ if __name__ == '__main__':
 
     lista = get_arbol()
     data = dict((key, d[key]) for d in lista for key in d)
-    json.dump(data, open('listado_tesauro.json', 'w'))
+    json.dump(data, open('listado_thesaurus.json', 'w'))
