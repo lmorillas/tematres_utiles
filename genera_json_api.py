@@ -77,7 +77,9 @@ def get_termino(termino):
     if related:
         data['related'] = [ingles(r.get('term_id')) for r in related]
     data['keywords'] = [tag]
-    data['children'] = [get_termino(x) for x in hijos]
+    children = [get_termino(x) for x in hijos]
+    if children:
+        data['children'] =  {k:l[k] for l in children for k in l} 
     return {clave : data }
 
 def get_arbol():
@@ -87,7 +89,7 @@ def get_arbol():
 
 if __name__ == '__main__':
     # para usar con api local dockerizada o en remoto en ibersid.eu
-    LOCAL = False
+    LOCAL = True
     if LOCAL:
         remote = 'http://ibersid.eu/tesauros/tesauro_03/vocab/services.php'
         local = 'http://localhost:8001/vocab/services.php'
@@ -98,4 +100,4 @@ if __name__ == '__main__':
 
     lista = get_arbol()
     data = dict((key, d[key]) for d in lista for key in d)
-    json.dump(data, open('listado_thesaurus.json', 'w'))
+    json.dump(data, open('listado_thesaurus.json', 'w'), ensure_ascii=False)
